@@ -19,5 +19,5 @@ RUN python3 -m venv env \
     && ln -s $(pwd)/fernet.sh /usr/local/bin/fernet
 
 # Set the entry point to the fernet.sh script
-ENTRYPOINT ["python", "./fernet.py"]
+ENTRYPOINT ["python", "/usr/src/app/fernet.py"]
 CMD ["--help"]  # You can change this to the default command you want to run
