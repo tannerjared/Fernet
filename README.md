@@ -37,7 +37,7 @@ singularity build fernet.sif docker://jjtanner/fernet
 ### Run singularity image
 Update paths
 ```
-apptainer run --bind /path/to/fernet_FW_in:/fw_data --bind /path/to/fernet_FW_out:/fw_data_test_out fernet_latest.sif -d /fw_data/jt2021_ecc.nii.gz -r /fw_data/jt2021.bvec -b /fw_data/jt2021.bval -m /fw_data/jt2021_brain_mask.nii.gz -o /fw_data_test_out/jt2021
+apptainer run --bind /path/to/fernet_FW_in:/fw_data --bind /path/to/fernet_FW_out:/fw_data_out fernet_latest.sif -d /fw_data/jt2021_ecc.nii.gz -r /fw_data/jt2021.bvec -b /fw_data/jt2021.bval -m /fw_data/jt2021_brain_mask.nii.gz -o /fw_data_out/jt2021
 ```
 
 ## Installation on UNIX-based system
