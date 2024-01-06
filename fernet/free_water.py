@@ -193,7 +193,7 @@ def grad_spatial_reg(tensor_iwasawa, mask=None):
     """
     dim_x, dim_y, dim_z, _ = tensor_iwasawa.shape
     if mask == None:
-        mask = np.ones((dim_x, dim_y, dim_z), dtype=np.bool)
+        mask = np.ones((dim_x, dim_y, dim_z), dtype=bool)
     grad = np.zeros((dim_x, dim_y, dim_z, 6))
     first_term = np.zeros((dim_x, dim_y, dim_z, 3, 6))
     spatial_grad_tensor = spatial_gradient(tensor_iwasawa)

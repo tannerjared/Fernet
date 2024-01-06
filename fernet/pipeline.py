@@ -23,7 +23,7 @@ def calculate_scalars(tensor_data, mask):
     Calculate the scalar images from the tensor
     returns: FA, MD, TR, AX, RAD
     '''
-    mask = np.asarray(mask, dtype=np.bool)
+    mask = np.asarray(mask, dtype=bool)
     shape = mask.shape
     data = dti.from_lower_triangular(tensor_data[mask])
     w, v = dti.decompose_tensor(data)
@@ -46,7 +46,7 @@ def tissue_rois(mask, fa, tr, erode_iterations=10, fa_threshold=0.7, tr_threshol
     Calculate tissue ROIs inside a mask after eroding the mask
     With the option to exclude certain voxels
     '''
-    mask = np.asarray(mask, dtype=np.bool)
+    mask = np.asarray(mask, dtype=bool)
     mask = erode_mask(mask, erode_iterations)
     if exclude is not None:
         mask = np.logical_and(mask, exclude==0)
