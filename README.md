@@ -29,6 +29,17 @@ Update paths as appropriate. This is for a single subject who already had eddy c
 docker run -v /mnt/g/freewater_code/FW:/fw_data -v /mnt/g/freewater_code/FW_test_out:/fw_data_test_out fernet -d /fw_data/jt2021_ecc.nii.gz -r /fw_data/jt2021.bvec -b /fw_data/jt2021.bval -m /fw_data/jt2021_brain_mask.nii.gz -o /fw_data_test_out/jt2021
 ```
 
+## As Singularity image for HPC
+```
+singularity build fernet.sif docker://jjtanner/fernet
+```
+
+# Run singularity image
+Update paths as appropriate
+```
+singularity run --bind /mnt/g/freewater_code/FW:/fw_data --bind /mnt/g/freewater_code/FW_test_out:/fw_data_test_out fernet.sif -d /fw_data/jt2021_ecc.nii.gz -r /fw_data/jt2021.bvec -b /fw_data/jt2021.bval -m /fw_data/jt2021_brain_mask.nii.gz -o /fw_data_test_out/jt2021
+```
+
 ## Installation on UNIX-based system
 
 ```bash
