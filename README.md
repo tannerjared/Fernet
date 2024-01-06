@@ -17,6 +17,11 @@ cd Fernet
 docker build -t fernet .
 ```
 
+You can also pull one from Docker Hub
+```
+docker pull jjtanner/fernet
+```
+
 ## Run docker image
 
 Update paths as appropriate. This is for a single subject who already had eddy corrected diffusion data.
