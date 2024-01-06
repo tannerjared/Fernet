@@ -25,7 +25,7 @@ docker pull jjtanner/fernet
 
 Update paths as appropriate. This is for a single subject who already had eddy corrected diffusion data.
 ```
-docker run -v /mnt/g/freewater_code/FW:/fw_data -v /mnt/g/freewater_code/FW_test_out:/fw_data_out fernet -d /fw_data/jt2021_ecc.nii.gz -r /fw_data/jt2021.bvec -b /fw_data/jt2021.bval -m /fw_data/jt2021_brain_mask.nii.gz -o /fw_data_out/jt2021
+docker run -v /path/to/dwi_in:/dwi_in -v /path/to/fw_out:/fw_out fernet -d /dwi_in/jt2021_ecc.nii.gz -r /dwi_in/jt2021.bvec -b /dwi_in/jt2021.bval -m /dwi_in/jt2021_brain_mask.nii.gz -o /fw_out/jt2021
 ```
 
 ## As Singularity image for HPC
@@ -40,7 +40,7 @@ docker save -o fernet.tar fernet && singularity build fernet.sif docker-archive:
 ### Run singularity image
 Update paths for where your input data are and where the output will be saved.
 ```
-apptainer run --bind /path/to/fernet_FW_in:/fw_data --bind /path/to/fernet_FW_out:/fw_data_out fernet_latest.sif -d /fw_data/jt2021_ecc.nii.gz -r /fw_data/jt2021.bvec -b /fw_data/jt2021.bval -m /fw_data/jt2021_brain_mask.nii.gz -o /fw_data_out/jt2021
+apptainer run --bind /path/to/dwi_in:/dwi_in --bind /path/to/fw_out:/fw_out fernet_latest.sif -d /dwi_in/jt2021_ecc.nii.gz -r /dwi_in/jt2021.bvec -b /dwi_in/jt2021.bval -m /dwi_in/jt2021_brain_mask.nii.gz -o /fw_out/jt2021
 ```
 
 ## Installation on UNIX-based system
