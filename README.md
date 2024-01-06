@@ -1,6 +1,6 @@
 # Single Shell Free Water Estimation
 
-Adapted from https://github.com/neuro-stivenr/Fernet
+Adapted from https://github.com/neuro-stivenr/Fernet and https://github.com/neuro-stivenr/Fernet
 
 ## Original Description
 
@@ -44,6 +44,9 @@ apptainer run --bind /path/to/fernet_FW_in:/fw_data --bind /path/to/fernet_FW_ou
 ```
 
 ## Installation on UNIX-based system
+These instructions are from https://github.com/neuro-stivenr/Fernet
+
+I've not really tested them because my focus was on getting a Docker container and Singularity container working. I recommend using the Docker or Singularity containers.
 
 ```bash
 make install
