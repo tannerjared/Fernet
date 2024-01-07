@@ -17,6 +17,8 @@ For freewater calculations it is best to use b values ≤ 1000. If you have mult
 ```
 select_dwi_vols dwi_den_preproc_unbiased.nii.gz dwi_den_preproc_unbiased.bval dwi_den_preproc_unbiased_subset 0 -b 101 -b 400 -b 700 -b 1000 -obv dwi_den_preproc_unbiased.bvec
 ```
+While this tool is for "single shell" free water estimation, there's likely no reason why it cannot be run on multi-shell data. It's best to run comparison tests. I've run the Pasternak Matlab code on multi-shell data (keeping b values ≤ 1000 or so (1200 might be appropriate too)) with good results.
+
 I like to put all files in a single directory for processing but you can structure however you want. At a minimum you need the eddy corrected (and TOPUP if you can) dwi nifti, a brain mask (multipl ways to create but it will be produced if you follow the dwifslpreproc guide), and your bvec and bval files. You could also have CSF and white matter maks files as inputs. There are multiple ways to create those but that typically requires T1-weighted data. They should be registered to the DWI space first (or you can register your DWI to the anatomical T1 space and run this all on those images).
 
 ## Create a docker image
