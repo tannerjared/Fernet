@@ -56,7 +56,7 @@ apptainer run --bind /path/to/dwi_in:/dwi_in --bind /path/to/fw_out:/fw_out fern
 ## Installation on UNIX-based system
 These instructions are from https://github.com/neuro-stivenr/Fernet
 
-I've not really tested them because my focus was on getting a Docker container and Singularity container working. I recommend using the Docker or Singularity containers.
+I've not really tested them because my focus was on getting a Docker container and Singularity container working. I recommend using the Docker or Singularity containers because you won't need to install anything (assuming you have Docker and/or Singularity/Apptainer already set up).
 
 ```bash
 make install
