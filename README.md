@@ -2,13 +2,13 @@
 
 Adapted from https://github.com/neuro-stivenr/Fernet and https://github.com/DiCIPHR-Lab/Fernet
 
-## Original Description
+## Original Description with some edits
 
 This Python package contains FERNET, a tool for Free-watER iNvariant 
 Estimation of Tensor on single shell diffusion MR data. 
 
 FERNET uses NIfTI as its data format for MR images, using the "nii.gz" 
-file extension. It uses the FSL convention for "bval" and "bvec" text files. 
+file extension (.nii works too!). It uses the FSL convention for "bval" and "bvec" text files. 
 
 ## Notes about running
 This method was developed and shown to work with single shell diffusion data (b = 800). Article here: https://doi.org/10.1371/journal.pone.0233645
