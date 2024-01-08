@@ -38,12 +38,13 @@ If you have multi-shell data with higher b values (e.g., 2000 or 3000), it's bes
 I like to put all files in a single directory for processing but you can structure however you want. At a minimum you need the eddy corrected (with TOPUP if you can or using N4BiasFieldCorrection on the b0 images, which is what the authors did) dwi nifti, a brain mask (multiple ways to create but it will be produced if you follow the dwifslpreproc guide), and your bvec and bval files. You could also have CSF and white matter maks files as inputs. There are multiple ways to create those but that typically requires T1-weighted data. They should be registered to the DWI space first, or you can register your DWI to the anatomical T1 space and run this all on those images.
 
 ## Create a docker image
+Run this to build a container for your device (strongly recommended for arm processors, like what are in Apple Silicon devices).
 ```
 git clone https://github.com/tannerjared/Fernet.git 
 cd Fernet
 docker build -t fernet .
 ```
-You can also pull one from Docker Hub
+You can also pull one from Docker Hub if using x64 processors (not M1, M2, M3... Apple Silicon)
 ```
 docker pull jjtanner/fernet
 ```
