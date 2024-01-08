@@ -15,11 +15,12 @@ setup(
         os.path.join('scripts', 'fernet_regions.py'),
         os.path.join('scripts', 'fernet_fw_dwi.py'),
     ],
-    packages=find_packages(),
-    install_requires=[
-        'numpy>=1.10.4',
-        'scipy>=0.17.1',
-        'nibabel>=2.0.1',
-        'dipy>=0.10.1',
-    ],
+# Uncomment the below if you want this to handle the required packages instead of the requirements.txt file
+#    packages=find_packages(),
+#    install_requires=[
+#        'numpy>=1.10.4',
+#        'scipy>=0.17.1',
+#        'nibabel>=2.0.1',
+#        'dipy>=0.10.1',
+#    ],
 )
