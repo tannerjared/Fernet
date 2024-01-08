@@ -2,6 +2,16 @@
 
 Adapted from https://github.com/neuro-stivenr/Fernet and https://github.com/DiCIPHR-Lab/Fernet
 
+I mainly dockerized the code but I did update some of the specific functions to work with newer versions of numpy, nibabel, and dipy. You should be able to compare my scripts with the master/pre-fork scripts to see changes.
+
+Summary of changes
+
+1. I imported setuptools instead of distutils: The script now imports setup and find_packages from setuptools.
+2. find_packages(): This function automatically finds all packages in the directory (that is, folders containing an __init__.py file).
+3. Removed Extension import: Extension from distutils was not used.
+4. Replaced nibable's older get_data() with get_fdata()
+5. Replaced NumPy's deprecated np.bool to bool
+
 ## Original Description with some edits
 
 This Python package contains FERNET, a tool for Free-watER iNvariant 
