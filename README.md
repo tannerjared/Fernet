@@ -11,15 +11,21 @@ FERNET uses NIfTI as its data format for MR images, using the "nii.gz"
 file extension. It uses the FSL convention for "bval" and "bvec" text files. 
 
 ## Notes about running
-This requires a single shell file that is eddy current corrected with rotated bvecs. This guide should give good results for preprocessing diffusion data. Modify it as needed for your data: https://github.com/tannerjared/MRI_Guide/wiki/dwifslpreproc
+This method was developed and shown to work with single shell diffusion data (b = 800). Article here: https://doi.org/10.1371/journal.pone.0233645
 
-For freewater calculations it is best to use b values ≤ 1000. If you have multishell data with higher b values, you can extract the ones you want using this FSL tool following this sample command (this is specific to a particular dwi sequence, adapt as needed). Note that I have b values of 101 in there because FSL's EDDY struggles with b values of 100 so I change them to 101 before running EDDY:
+However, multi-shell data will work (see linked paper).
+
+As with any diffusion data, a minimum of eddy current correction with rotated bvecs is strongly recommended. Bias correction will also improve results. This guide should give good results for preprocessing diffusion data. Modify it as needed for your data: https://github.com/tannerjared/MRI_Guide/wiki/dwifslpreproc
+
+For freewater calculations it is not clear if higher b values (≥~1000) provide benefit. In fact, the signal to noise reductions in data at higher b values can lead to increased free water modeling error. From the FERNET paper: "Although, as expected, the free water estimation became increasingly robust as SNR increased, the effect of SNR on the mean of free water estimation was negligible beyond an SNR of 20." The converse of this is that lower SNR should lead to increased errors in free water estimation. Because of this, if you have multishell data with higher b values, you might want to limit your data to b≤1000. You can extract directions you want using this FSL tool following this sample command (this is specific to a particular dwi sequence, adapt as needed). Note that I have b values of 101 in there because FSL's EDDY struggles with b values of 100 so I change them in the bval file to 101 before running EDDY:
 ```
 select_dwi_vols dwi_den_preproc_unbiased.nii.gz dwi_den_preproc_unbiased.bval dwi_den_preproc_unbiased_subset 0 -b 101 -b 400 -b 700 -b 1000 -obv dwi_den_preproc_unbiased.bvec
 ```
-While this tool is for "single shell" free water estimation, there's likely no reason why it cannot be run on multi-shell data. It's best to run comparison tests. I've run the Pasternak Matlab code on multi-shell data (keeping b values ≤ 1000 or so (1200 might be appropriate too)) with good results.
+If you have multi-shell data with higher b values (e.g., 2000 or 3000), it's best to run comparison tests with and without them in the data. If you only have single shell data (b≤1200 or so), you should be fine running this method. If you have multi-shell data, you should also be fine but again, maybe run some trials with and without the higher b values. As a note, I've run the original Pasternak Matlab code (this current method appears to be an adaptation of that), on both single shell and multi-shell data (keeping b values ≤ ~1000) with good results.
 
-I like to put all files in a single directory for processing but you can structure however you want. At a minimum you need the eddy corrected (and TOPUP if you can) dwi nifti, a brain mask (multipl ways to create but it will be produced if you follow the dwifslpreproc guide), and your bvec and bval files. You could also have CSF and white matter maks files as inputs. There are multiple ways to create those but that typically requires T1-weighted data. They should be registered to the DWI space first (or you can register your DWI to the anatomical T1 space and run this all on those images).
+### Notes about data organization
+
+I like to put all files in a single directory for processing but you can structure however you want. At a minimum you need the eddy corrected (with TOPUP if you can or using N4BiasFieldCorrection on the b0 images, which is what the authors did) dwi nifti, a brain mask (multiple ways to create but it will be produced if you follow the dwifslpreproc guide), and your bvec and bval files. You could also have CSF and white matter maks files as inputs. There are multiple ways to create those but that typically requires T1-weighted data. They should be registered to the DWI space first, or you can register your DWI to the anatomical T1 space and run this all on those images.
 
 ## Create a docker image
 ```
@@ -56,7 +62,7 @@ apptainer run --bind /path/to/dwi_in:/dwi_in --bind /path/to/fw_out:/fw_out fern
 ## Installation on UNIX-based system
 These instructions are from https://github.com/neuro-stivenr/Fernet
 
-I've not really tested them because my focus was on getting a Docker container and Singularity container working. I recommend using the Docker or Singularity containers because you won't need to install anything (assuming you have Docker and/or Singularity/Apptainer already set up).
+I've not tested them because my focus was on getting Docker and Singularity containers working. I recommend using the Docker or Singularity containers because you won't need to install anything (assuming you have Docker and/or Singularity/Apptainer already set up).
 
 ```bash
 make install
