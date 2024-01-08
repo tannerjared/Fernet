@@ -1,6 +1,6 @@
 # Single Shell Free Water Estimation
 
-Adapted from https://github.com/neuro-stivenr/Fernet and https://github.com/neuro-stivenr/Fernet
+Adapted from https://github.com/neuro-stivenr/Fernet and [https://github.com/neuro-stivenr/Fernet](https://github.com/DiCIPHR-Lab/Fernet)
 
 ## Original Description
 
