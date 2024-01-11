@@ -46,7 +46,11 @@ docker build -t fernet .
 ```
 You can also pull one from Docker Hub if using x64 processors (not M1, M2, M3... Apple Silicon)
 ```
-docker pull jjtanner/fernet
+docker pull jjtanner/fernet:latest
+```
+Container for macOS with Apple Silicon
+```
+docker pull jjtanner/fernet:arm
 ```
 ## Run docker image
 
@@ -57,7 +61,7 @@ docker run -v /path/to/dwi_in:/dwi_in -v /path/to/fw_out:/fw_out fernet -d /dwi_
 
 ## As Singularity image for HPC
 ```
-singularity build fernet.sif docker://jjtanner/fernet
+singularity build fernet.sif docker://jjtanner/fernet:latest
 ```
 Or, if you have the container locally built in Docker, you can run this to save it and build as a Singularity container
 ```
