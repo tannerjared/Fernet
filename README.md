@@ -9,7 +9,7 @@ Summary of changes
 1. I imported setuptools instead of distutils: The script now imports setup and find_packages from setuptools.
 2. find_packages(): This function automatically finds all packages in the directory (that is, folders containing an __init__.py file).
 3. Removed Extension import: Extension from distutils was not used.
-4. Replaced nibable's older get_data() with get_fdata()
+4. Replaced nibabel's older get_data() with get_fdata()
 5. Replaced NumPy's deprecated np.bool to bool
 
 ## Original Description with some edits
