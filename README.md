@@ -35,7 +35,7 @@ If you have multi-shell data with higher b values (e.g., 2000 or 3000), it's bes
 
 ### Notes about data organization
 
-I like to put all files in a single directory for processing but you can structure however you want. You need a preprocessed dwi nifti (eddy correction is minimum), a brain mask (multiple ways to create but it will be produced if you follow the dwifslpreproc guide), and your bvec and bval files. You could also have CSF and white matter maks files as inputs. There are multiple ways to create those but that typically requires T1-weighted data. They should be registered to the DWI space first, or you can register your DWI to the anatomical T1 space and run this all on those images.
+I like to put all files in a single directory for processing but you can structure however you want. You need a preprocessed dwi nifti (eddy correction is minimum), a brain mask (multiple ways to create but it will be produced if you follow the dwifslpreproc guide), and your bvec and bval files. You could also have CSF and white matter mask files as inputs. There are multiple ways to create those but that typically requires T1-weighted data. They should be registered to the DWI space first, or you can register your DWI to the anatomical T1 space and run this all on those images.
 
 ## Create a docker image
 Run this to build a container for your device or see below for pre-built containers (x64 and arm64).
